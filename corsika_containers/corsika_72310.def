@@ -1,0 +1,19 @@
+Bootstrap: docker-daemon
+From: alpine:3.20.3
+
+%files
+corsika-77100/ /corsika-77100
+
+%post
+cd /corsika-77100
+apk add gcc && apk add gfortran && apk add libc-dev && apk add perl && apk add make
+
+printf '\n2\n3\n1\n4\n6\n6a\n7a\n7b\nh\nh2\nz\nyes\nf' | ./coconut
+
+apk del perl && apk del make &&  apk del libc-dev
+
+%environment
+PATH=$PATH:/corsika-77100/run/
+
+%runscript
+/mnt/corsika.sh
