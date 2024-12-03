@@ -5,7 +5,7 @@
 
 ## CORSIKA compilation options
 
-The <id> of the containers is defined as follows, following from the compilation options in CORSIKA (coconut script):
+The `id` of the containers is defined as follows, following from the compilation options in CORSIKA (coconut script):
 
 `container_name=corsika${cver}${hehim}${lehim}${geo}${ao}`
 
@@ -13,10 +13,10 @@ The <id> of the containers is defined as follows, following from the compilation
 
 Then, the following options for the CORSIKA7 compilation in coconut:
 
-- 'hehim`: id=2 for EPOS, id=6 for SYBIL
-- `lehim`: id=1 for GHEISHA, id=3 for URQMD
-- `geo`: id=1 for FLAT, id=2 nonFlat, id=3 String
-- `ao`: 0 if they are standard options, any other numbers (to be codified) for alternative options
+- `hehim`: id=2 for `EPOS`, id=6 for `SYBILL`
+- `lehim`: id=1 for `GHEISHA`, id=3 for `URQMD`
+- `geo`: id=1 for `Flat`, id=2 `nonFlat`, id=3 `String`
+- `ao`: 0 if they are standard options (see below), any other number (to be codified) for alternative options
 
 
 ### Standard options (i.e. alternative options set to 0): 
