@@ -4,11 +4,11 @@ The CORSIKA air shower simulation software is widely used to obtain simulation o
 
 ## CORSIKA containers
 
-Singularity container definitions are provided to run CORSIKA simulations
+Singularity container definitions are provided to run CORSIKA7 simulations
 
-- obtain corsika 7.7100 from https://www.iap.kit.edu/corsika/
+- obtain CORSIKA 7.7100 from https://www.iap.kit.edu/corsika/
 - build the singularity images by doing `sudo singularity build corsika<id>.sif corsika_<id>.def`
-- store the images in your folder
+- store the images in your folder (see below)
 
 
 ## CORSIKA simulation scripts
