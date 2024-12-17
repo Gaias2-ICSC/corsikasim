@@ -276,6 +276,200 @@ plt.savefig("plots/dataproc10_real_him.png")
 plt.show()
 
 
+r_epos_geisha_L = np.mean(dataproc09[(dataproc09['container_version'] == 72310) 
+                                     & (dataproc09['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_epos_geisha_M = np.mean(dataproc09[(dataproc09['container_version'] == 72310) 
+                                     & (dataproc09['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_epos_geisha_H = np.mean(dataproc09[(dataproc09['container_version'] == 72310) 
+                                     & (dataproc09['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_epos_geisha_UH = np.mean(dataproc09[(dataproc09['container_version'] == 72310) 
+                                      & (dataproc09['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_epos_geisha = [r_epos_geisha_L, r_epos_geisha_M, r_epos_geisha_H, r_epos_geisha_UH]
+
+r_syb_geisha_L = np.mean(dataproc09[(dataproc09['container_version'] == 76310) 
+                                    & (dataproc09['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_syb_geisha_M = np.mean(dataproc09[(dataproc09['container_version'] == 76310) 
+                                    & (dataproc09['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_syb_geisha_H = np.mean(dataproc09[(dataproc09['container_version'] == 76310) 
+                                    & (dataproc09['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_syb_geisha_UH = np.mean(dataproc09[(dataproc09['container_version'] == 76310) 
+                                     & (dataproc09['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_syb_geisha = [r_syb_geisha_L, r_syb_geisha_M, r_syb_geisha_H, r_syb_geisha_UH]
+
+
+r_epos_urqmd_L = np.mean(dataproc09[(dataproc09['container_version'] == 72110) 
+                                    & (dataproc09['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_epos_urqmd_M = np.mean(dataproc09[(dataproc09['container_version'] == 72110) 
+                                    & (dataproc09['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_epos_urqmd_H = np.mean(dataproc09[(dataproc09['container_version'] == 72110) 
+                                    & (dataproc09['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_epos_urqmd_UH = np.mean(dataproc09[(dataproc09['container_version'] == 72110) 
+                                     & (dataproc09['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_epos_urqmd = [r_epos_urqmd_L, r_epos_urqmd_M, r_epos_urqmd_H, r_epos_urqmd_UH]
+
+
+r_syb_urqmd_L = np.mean(dataproc09[(dataproc09['container_version'] == 76110) 
+                                   & (dataproc09['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_syb_urqmd_M = np.mean(dataproc09[(dataproc09['container_version'] == 76110) 
+                                   & (dataproc09['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_syb_urqmd_H = np.mean(dataproc09[(dataproc09['container_version'] == 76110) 
+                                   & (dataproc09['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_syb_urqmd_UH = np.mean(dataproc09[(dataproc09['container_version'] == 76110) 
+                                    & (dataproc09['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_syb_urqmd = [r_syb_urqmd_L, r_syb_urqmd_M, r_syb_urqmd_H, r_syb_urqmd_UH]
+
+plt.scatter(egrid, r_epos_geisha, color = 'r', label = 'EPOS + GEISHA')
+plt.scatter(egrid, r_epos_urqmd, color = 'b', label = 'EPOS + URQMD')
+plt.scatter(egrid, r_syb_geisha, color = 'g', label = 'Sybill + GEISHA')
+plt.scatter(egrid, r_syb_urqmd, color = 'orange', label = 'Sybill + URQMD')
+
+print(egrid)
+print(r_epos_geisha)
+
+plt.legend()
+plt.xlim(1e3, 1e9)
+plt.ylim(1e-2, 1e4)
+plt.xscale("log")
+plt.yscale("log")
+plt.xlabel("primary energy [GeV]")
+plt.ylabel("real time per event [s]")
+plt.title("dataproc09")
+plt.savefig("plots/dataproc09_real_him.png")
+plt.show()
+
+
+
+r_epos_geisha_L = np.mean(dataproc11[(dataproc11['container_version'] == 72310) 
+                                     & (dataproc11['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_epos_geisha_M = np.mean(dataproc11[(dataproc11['container_version'] == 72310) 
+                                     & (dataproc11['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_epos_geisha_H = np.mean(dataproc11[(dataproc11['container_version'] == 72310) 
+                                     & (dataproc11['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_epos_geisha_UH = np.mean(dataproc11[(dataproc11['container_version'] == 72310) 
+                                      & (dataproc11['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_epos_geisha = [r_epos_geisha_L, r_epos_geisha_M, r_epos_geisha_H, r_epos_geisha_UH]
+
+r_syb_geisha_L = np.mean(dataproc11[(dataproc11['container_version'] == 76310) 
+                                    & (dataproc11['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_syb_geisha_M = np.mean(dataproc11[(dataproc11['container_version'] == 76310) 
+                                    & (dataproc11['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_syb_geisha_H = np.mean(dataproc11[(dataproc11['container_version'] == 76310) 
+                                    & (dataproc11['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_syb_geisha_UH = np.mean(dataproc11[(dataproc11['container_version'] == 76310) 
+                                     & (dataproc11['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_syb_geisha = [r_syb_geisha_L, r_syb_geisha_M, r_syb_geisha_H, r_syb_geisha_UH]
+
+
+r_epos_urqmd_L = np.mean(dataproc11[(dataproc11['container_version'] == 72110) 
+                                    & (dataproc11['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_epos_urqmd_M = np.mean(dataproc11[(dataproc11['container_version'] == 72110) 
+                                    & (dataproc11['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_epos_urqmd_H = np.mean(dataproc11[(dataproc11['container_version'] == 72110) 
+                                    & (dataproc11['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_epos_urqmd_UH = np.mean(dataproc11[(dataproc11['container_version'] == 72110) 
+                                     & (dataproc11['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_epos_urqmd = [r_epos_urqmd_L, r_epos_urqmd_M, r_epos_urqmd_H, r_epos_urqmd_UH]
+
+
+r_syb_urqmd_L = np.mean(dataproc11[(dataproc11['container_version'] == 76110) 
+                                   & (dataproc11['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_syb_urqmd_M = np.mean(dataproc11[(dataproc11['container_version'] == 76110) 
+                                   & (dataproc11['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_syb_urqmd_H = np.mean(dataproc11[(dataproc11['container_version'] == 76110) 
+                                   & (dataproc11['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_syb_urqmd_UH = np.mean(dataproc11[(dataproc11['container_version'] == 76110) 
+                                    & (dataproc11['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_syb_urqmd = [r_syb_urqmd_L, r_syb_urqmd_M, r_syb_urqmd_H, r_syb_urqmd_UH]
+
+plt.scatter(egrid, r_epos_geisha, color = 'r', label = 'EPOS + GEISHA')
+plt.scatter(egrid, r_epos_urqmd, color = 'b', label = 'EPOS + URQMD')
+plt.scatter(egrid, r_syb_geisha, color = 'g', label = 'Sybill + GEISHA')
+plt.scatter(egrid, r_syb_urqmd, color = 'orange', label = 'Sybill + URQMD')
+
+plt.legend()
+plt.xlim(1e3, 1e9)
+plt.ylim(1e-2, 1e4)
+plt.xscale("log")
+plt.yscale("log")
+plt.xlabel("primary energy [GeV]")
+plt.ylabel("real time per event [s]")
+plt.title("dataproc11")
+plt.savefig("plots/dataproc11_real_him.png")
+plt.show()
+
+
+
+r_epos_geisha_L = np.mean(dataproc12[(dataproc12['container_version'] == 72310) 
+                                     & (dataproc12['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_epos_geisha_M = np.mean(dataproc12[(dataproc12['container_version'] == 72310) 
+                                     & (dataproc12['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_epos_geisha_H = np.mean(dataproc12[(dataproc12['container_version'] == 72310) 
+                                     & (dataproc12['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_epos_geisha_UH = np.mean(dataproc12[(dataproc12['container_version'] == 72310) 
+                                      & (dataproc12['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_epos_geisha = [r_epos_geisha_L, r_epos_geisha_M, r_epos_geisha_H, r_epos_geisha_UH]
+
+r_syb_geisha_L = np.mean(dataproc12[(dataproc12['container_version'] == 76310) 
+                                    & (dataproc12['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_syb_geisha_M = np.mean(dataproc12[(dataproc12['container_version'] == 76310) 
+                                    & (dataproc12['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_syb_geisha_H = np.mean(dataproc12[(dataproc12['container_version'] == 76310) 
+                                    & (dataproc12['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_syb_geisha_UH = np.mean(dataproc12[(dataproc12['container_version'] == 76310) 
+                                     & (dataproc12['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_syb_geisha = [r_syb_geisha_L, r_syb_geisha_M, r_syb_geisha_H, r_syb_geisha_UH]
+
+
+r_epos_urqmd_L = np.mean(dataproc12[(dataproc12['container_version'] == 72110) 
+                                    & (dataproc12['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_epos_urqmd_M = np.mean(dataproc12[(dataproc12['container_version'] == 72110) 
+                                    & (dataproc12['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_epos_urqmd_H = np.mean(dataproc12[(dataproc12['container_version'] == 72110) 
+                                    & (dataproc12['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_epos_urqmd_UH = np.mean(dataproc12[(dataproc12['container_version'] == 72110) 
+                                     & (dataproc12['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_epos_urqmd = [r_epos_urqmd_L, r_epos_urqmd_M, r_epos_urqmd_H, r_epos_urqmd_UH]
+
+
+r_syb_urqmd_L = np.mean(dataproc12[(dataproc12['container_version'] == 76110) 
+                                   & (dataproc12['minimal_energy'] == 1e3)].real_time_seconds/Ngen_L)
+r_syb_urqmd_M = np.mean(dataproc12[(dataproc12['container_version'] == 76110) 
+                                   & (dataproc12['minimal_energy'] == 1e5)].real_time_seconds/Ngen_M)
+r_syb_urqmd_H = np.mean(dataproc12[(dataproc12['container_version'] == 76110) 
+                                   & (dataproc12['minimal_energy'] == 1e7)].real_time_seconds/Ngen_H)
+r_syb_urqmd_UH = np.mean(dataproc12[(dataproc12['container_version'] == 76110) 
+                                    & (dataproc12['minimal_energy'] == 1e8)].real_time_seconds/Ngen_UH)
+
+r_syb_urqmd = [r_syb_urqmd_L, r_syb_urqmd_M, r_syb_urqmd_H, r_syb_urqmd_UH]
+
+plt.scatter(egrid, r_epos_geisha, color = 'r', label = 'EPOS + GEISHA')
+plt.scatter(egrid, r_epos_urqmd, color = 'b', label = 'EPOS + URQMD')
+plt.scatter(egrid, r_syb_geisha, color = 'g', label = 'Sybill + GEISHA')
+plt.scatter(egrid, r_syb_urqmd, color = 'orange', label = 'Sybill + URQMD')
+
+plt.legend()
+plt.xlim(1e3, 1e9)
+plt.ylim(1e-2, 1e4)
+plt.xscale("log")
+plt.yscale("log")
+plt.xlabel("primary energy [GeV]")
+plt.ylabel("real time per event [s]")
+plt.title("dataproc12")
+plt.savefig("plots/dataproc12_real_him.png")
+plt.show()
+
+
 u_epos_geisha_L = np.mean(dataproc10[(dataproc10['container_version'] == 72310) 
                                      & (dataproc10['minimal_energy'] == 1e3)].user_time_seconds/Ngen_L)
 u_epos_geisha_M = np.mean(dataproc10[(dataproc10['container_version'] == 72310) 
