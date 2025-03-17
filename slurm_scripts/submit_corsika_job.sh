@@ -30,24 +30,64 @@ else
 fi
 
 
-if [ "$energy" = "L" ]; then
-    echo "Low energy range 1e3 - 1e5 GeV"
+if [ "$energy" = "1" ]; then
+    echo "Energy range 1e3 - 1e4 GeV"
     energym="1e3"
+    energyM="1e4"
+    nshow=50000
+elif [ "$energy" = "10" ]; then
+    echo "Energy range 1e4 - 1e5 GeV"
+    energym="1e4"
     energyM="1e5"
     nshow=10000
-elif [ "$energy" = "M" ]; then
-    echo "Mid energy range 1e5 - 1e7 GeV"
+elif [ "$energy" = "100" ]; then
+    echo "High energy range 1e5 - 1e6 GeV"
     energym="1e5"
+    energyM="1e6"
+    nshow=2000
+elif [ "$energy" = "1000" ]; then
+    echo "Ultra high energy range 1e6 - 1e7 GeV"
+    energym="1e6"
     energyM="1e7"
-    nshow=1000
-elif [ "$energy" = "H" ]; then
-    echo "High energy range 1e7 - 1e8 GeV"
+    nshow=500
+elif [ "$energy" = "10000" ]; then
+    echo "Ultra high energy range 1e7 - 2e7 GeV"
     energym="1e7"
+    energyM="2e7"
+    nshow=100
+elif [ "$energy" = "20000" ]; then
+    echo "Ultra high energy range 2e7 - 3e7 GeV"
+    energym="2e7"
+    energyM="3e7"
+    nshow=100
+elif [ "$energy" = "30000" ]; then
+    echo "Ultra high energy range 3e7 - 5e7 GeV"
+    energym="3e7"
+    energyM="5e7"
+    nshow=100
+elif [ "$energy" = "50000" ]; then
+    echo "Ultra high energy range 5e7 - 1e8 GeV"
+    energym="5e7"
     energyM="1e8"
     nshow=100
-elif [ "$energy" = "UH" ]; then
-    echo "Ultra high energy range 1e8 - 1e9 GeV"
+elif [ "$energy" = "100000" ]; then
+    echo "Ultra high energy range 1e8 - 2e8 GeV"
     energym="1e8"
+    energyM="2e8"
+    nshow=50
+elif [ "$energy" = "200000" ]; then
+    echo "Ultra high energy range 2e8 - 3e8 GeV"
+    energym="2e8"
+    energyM="3e8"
+    nshow=50
+elif [ "$energy" = "300000" ]; then
+    echo "Ultra high energy range 3e8 - 5e8 GeV"
+    energym="3e8"
+    energyM="5e8"
+    nshow=10
+elif [ "$energy" = "500000" ]; then
+    echo "Ultra high energy range 5e8 - 1e9 GeV"
+    energym="5e8"
     energyM="1e9"
     nshow=10
 else
@@ -63,6 +103,10 @@ elif [ "$zenith" = "H" ]; then
     echo "Horizontal events: zenith range 60 - 90 degrees"
     zenithm=60
     zenithM=90
+elif [ "$zenith" = "Z" ]; then
+    echo "Horizontal events: zenith range 0 - 0 degrees"
+    zenithm=0
+    zenithM=0
 else
     echo "Unknown zenith setup: $zenith"
     exit 1
@@ -74,7 +118,7 @@ export containerdir=${basedir}/corsika7_containers
 #echo ${basedir}
 #echo ${containerdir}
 
-export job_id=job${jobnumber}_contver${containerversion}_pr${primary}_e${energym}-${energyM}_z${zenithm}-${zenithM}
+export job_id=job${jobnumber}_contver${containerversion}_em_pr${primary}_e${energym}-${energyM}_z${zenithm}-${zenithM}
 #echo ${job_id}
 
 export job_folder=${basedir}/${job_id}
@@ -110,10 +154,10 @@ SEED    ${seed2}   0   0                     seed for 2. random number sequence
 OBSLEV  0.                            observation level (in cm)
 MAGNET  20.0  42.8                    magnetic field centr. Europe
 HADFLG  0  0  0  0  0  2              flags hadr.interact.&fragmentation
-ECUTS   1.  1.  0.001  0.001          energy cuts for particles
+ECUTS   1.  1.  1.  1.          energy cuts for particles
 MUADDI  T                             additional info for muons
 MUMULT  T                             muon multiple scattering angle
-ELMFLG  T   F                         em. interaction flags (NKG,EGS)
+ELMFLG  F   T                         em. interaction flags (NKG,EGS)
 STEPFC  1.0                           mult. scattering step length fact.
 RADNKG  200.E2                        outer radius for NKG lat.dens.distr.
 EPOPAR input ../epos/epos.param        !initialization input file for epos
@@ -155,10 +199,10 @@ SEED    ${seed2}   0   0                     seed for 2. random number sequence
 OBSLEV  0.                            observation level (in cm)
 MAGNET  20.0  42.8                    magnetic field centr. Europe
 HADFLG  0  0  0  0  0  2              flags hadr.interact.&fragmentation
-ECUTS   1.  1.  0.001  0.001          energy cuts for particles
+ECUTS   1.  1.  1.  1.          energy cuts for particles
 MUADDI  T                             additional info for muons
 MUMULT  T                             muon multiple scattering angle
-ELMFLG  T   F                         em. interaction flags (NKG,EGS)
+ELMFLG  F   T                         em. interaction flags (NKG,EGS)
 STEPFC  1.0                           mult. scattering step length fact.
 RADNKG  200.E2                        outer radius for NKG lat.dens.distr.
 LONGI   T  10.  F  F                  longit.distr. & step size & fit & outfile
@@ -179,8 +223,7 @@ fi
 
 mv ${corsika_input} ${job_folder}/.
 
-#echo ' FINO A QUA 1'
 
 ls ${job_folder}/
 
-sbatch --job-name=${job_id} --time=7-00:00:00 --mem=3000 --export=ALL,CONTAINERVERSION=${containerversion},CORSIKA_INPUT=${corsika_input},BASEDIR=${basedir},CONTAINERDIR=${containerdir},JOB_FOLDER=${job_folder} --ntasks 1 --output=${basedir}/corsika7_joblog/${job_id}.out --error=${basedir}/corsika7_joblog/${job_id}.err ${job_folder}/run-singularity.sh
+sbatch --job-name=${job_id} --time=7-00:00:00 --mem=3000 --export=ALL,CONTAINERVERSION=${containerversion},CORSIKA_INPUT=${corsika_input},BASEDIR=${basedir},CONTAINERDIR=${containerdir},JOB_FOLDER=${job_folder} --ntasks 1 --exclude=dataproc10 --output=${basedir}/corsika7_joblog/${job_id}.out --error=${basedir}/corsika7_joblog/${job_id}.err ${job_folder}/run-singularity.sh
