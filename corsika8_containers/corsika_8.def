@@ -1,0 +1,29 @@
+Bootstrap: docker-daemon
+From: ubuntu:24.04
+
+%files
+corsika/ /corsika
+
+%post
+
+apt-get update
+
+apt install -y make cmake gcc g++ gfortran python3 python3-pip python3.12-venv rsync
+
+python3 -m venv corsika-8
+. corsika-8/bin/activate
+
+pip install conan
+
+cd /corsika/../.
+
+mkdir corsika-build
+cd corsika-build
+
+bash ../corsika/conan-install.sh --source-directory ../corsika --release-with-debug
+
+../corsika/corsika-cmake.sh -c "-DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_INSTALL_PREFIX=../corsika-install"
+
+make -j4  
+
+make install
